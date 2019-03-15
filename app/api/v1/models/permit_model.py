@@ -76,7 +76,10 @@ class Permit(object):
                 orders.append(item)
         # orders.append(next((item for item in Parcel.parcels if item["placedBy"] == user_id), None))
         # the above line could have been cool, but again it only captures the first positive dictionary
-        return orders[0]
+        if len(orders) == 0:
+            return {"permitID": "invalid"}
+        else:
+            return orders[0]
 
     def get_orders_by_specific_user(self = None, user_id = None):
         orders = []
