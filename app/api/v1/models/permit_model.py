@@ -1,7 +1,75 @@
 class Permit(object):
+    # Dummy permit data
     permits = [
         {
-            # Dummy permit data
+            "permitID": "TCG-SBP-2018-2019-2033",
+            "customer": "Williams Cyber Cafe",
+            "businessType": "Computer Services",
+            "amountPaid": 20000,
+            "posta": "51 Lodwar",
+            "businessAddress": "Highway Towers",
+            "building": "rental",
+            "plotNumber": "LR5421",
+            "fiscalYear": "2019/2020",
+            "validFrom": "01 January 2019 12:00",
+            "validTill": "31 December 2019 11:59 PM",
+            "issuedBy": "ted",
+            "issuedOn": "9 March 2019 1:59 PM",
+            "invoiceNumber": "INV-2200",
+            "business": "TCG/2018/2019/1000"
+        },
+        {
+            "permitID": "TCG-SBP-2018-2019-1020",
+            "customer": "Oti's Workshop",
+            "businessType": "Furniture and Repairs",
+            "amountPaid": 15000,
+            "posta": "12 Lodwar",
+            "businessAddress": "Jua Kali Market",
+            "building": "market",
+            "plotNumber": "LR102",
+            "fiscalYear": "2019/2020",
+            "validFrom": "01 January 2019 12:00",
+            "validTill": "31 December 2019 11:59 PM",
+            "issuedBy": "ben",
+            "issuedOn": "18 February 2019 1:59 PM",
+            "invoiceNumber": "INV-3325",
+            "business": "TCG/2018/2019/1001"
+        },
+        {
+            "permitID": "TCG-SBP-2018-2019-1224",
+            "customer": "Wajenzi wa Wakanda",
+            "businessType": "Construction",
+            "amountPaid": 30000,
+            "posta": "2244 Wakanda-Lodwar",
+            "businessAddress": "Wakanda Center",
+            "building": "isolated",
+            "plotNumber": "LR1550",
+            "fiscalYear": "2019/2020",
+            "validFrom": "01 January 2019 12:00",
+            "validTill": "31 December 2019 11:59 PM",
+            "issuedBy": "ken",
+            "issuedOn": "15 February 2019 1:59 PM",
+            "invoiceNumber": "INV-3324",
+            "business": "TCG/2018/2019/1002"
+        },
+        {
+            "permitID": "TCG-SBP-2018-2019-1278",
+            "customer": "Okoti Engineers",
+            "businessType": "Construction",
+            "amountPaid": 30000,
+            "posta": "2244 Kitale",
+            "businessAddress": "Mjengo Towers",
+            "building": "isolated",
+            "plotNumber": "LR1526",
+            "fiscalYear": "2019/2020",
+            "validFrom": "01 January 2019 12:00",
+            "validTill": "31 December 2019 11:59 PM",
+            "issuedBy": "ken",
+            "issuedOn": "10 February 2019 1:59 PM",
+            "invoiceNumber": "INV-3323",
+            "business": "TCG/2018/2019/1003"
+        },
+        {
             "permitID": "TCG-SBP-2018-2019-1276",
             "customer": "XYZ Company",
             "businessType": "Hotel and Catering",
@@ -16,6 +84,7 @@ class Permit(object):
             "issuedBy": "ken",
             "issuedOn": "10 March 2019 1:59 PM",
             "invoiceNumber": "INV-3322",
+            "business": "TCG/2018/2019/1004"
         },
 
         {
@@ -76,7 +145,10 @@ class Permit(object):
                 orders.append(item)
         # orders.append(next((item for item in Parcel.parcels if item["placedBy"] == user_id), None))
         # the above line could have been cool, but again it only captures the first positive dictionary
-        return orders[0]
+        if len(orders) == 0:
+            return {"permitID": "invalid"}
+        else:
+            return orders[0]
 
     def get_orders_by_specific_user(self = None, user_id = None):
         orders = []
